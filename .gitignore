@@ -1,0 +1,81 @@
+### IDE ###
+/.idea
+/.fleet
+/.vscode
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+bin/
+.factorypath
+
+### Spring Boot ###
+target/
+!target/**/*.jar
+!target/**/*.war
+build/
+out/
+.gradle/
+
+### Maven ###
+log/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Environment ###
+.env
+*.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+application*.properties
+application*.yml
+config/application*.properties
+config/application*.yml
+
+### Logs ###
+*.log
+logs/
+!**/src/main/**/logs/
+
+### Database ###
+*.db
+*.sql
+*.h2.db
+
+### System ###
+.DS_Store
+Thumbs.db
+
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+### Test ###
+**/surefire-reports/
+**/failsafe-reports/
+**/test-results/
+**/test-output/
+**/tmp/
+
+### Frontend (caso tenha) ###
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
