@@ -1,0 +1,23 @@
+CREATE TABLE vehicles (
+    id BIGSERIAL PRIMARY KEY,
+    brand VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    year INTEGER NOT NULL,
+    description TEXT,
+    sold BOOLEAN NOT NULL DEFAULT false,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE FUNCTION update_vehicles_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER vehicles_update_timestamp
+BEFORE UPDATE ON vehicles
+FOR EACH ROW
+EXECUTE FUNCTION update_vehicles_timestamp();

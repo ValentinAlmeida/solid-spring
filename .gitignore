@@ -49,11 +49,6 @@ config/application*.yml
 logs/
 !**/src/main/**/logs/
 
-### Database ###
-*.db
-*.sql
-*.h2.db
-
 ### System ###
 .DS_Store
 Thumbs.db
