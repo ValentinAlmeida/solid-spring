@@ -3,8 +3,12 @@ package com.example.demo.services.implementation;
 import com.example.demo.dtos.CreateVehicleDTO;
 import com.example.demo.dtos.UpdateVehicleDTO;
 import com.example.demo.entities.VehicleEntity;
+import com.example.demo.filters.VehicleFilter;
 import com.example.demo.repositories.abstraction.VehicleRepositoryInterface;
 import com.example.demo.services.abstraction.VehicleServiceInterface;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +29,11 @@ public class VehicleService implements VehicleServiceInterface {
     @Override
     public VehicleEntity getVehicleById(Long id) {
         return vehicleRepository.findById(id);
+    }
+
+    @Override
+    public List<VehicleEntity> getVehicleByFilter(VehicleFilter filter) {
+        return vehicleRepository.findByFilter(filter);
     }
 
     @Override
