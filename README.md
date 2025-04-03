@@ -56,3 +56,5 @@ docker network connect demo-network demo-backend
 ---
 
 🎉 **Pronto!** Seu ambiente Docker está configurado e funcionando. Agora é só codar e brilhar! 💻✨
+
+🌟 As tarefas estão ordenadas na pasta docs de acordo com o teste enviado! 🌟
