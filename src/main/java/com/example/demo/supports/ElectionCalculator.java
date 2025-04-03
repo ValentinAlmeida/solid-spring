@@ -12,10 +12,10 @@ public final class ElectionCalculator {
         }
         
         ElectionCalculatorProperty props = new ElectionCalculatorProperty(
-            dto.getTotalVoters(),
-            dto.getValidVotes(),
-            dto.getBlankVotes(),
-            dto.getNullVotes()
+            dto.totalVoters(),
+            dto.validVotes(),
+            dto.blankVotes(),
+            dto.nullVotes()
         );
         
         return new ElectionCalculator(props);
