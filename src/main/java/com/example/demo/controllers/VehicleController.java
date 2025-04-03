@@ -40,8 +40,8 @@ public class VehicleController {
         return ResponseEntity.ok(VehicleEntitySerializer.serialize(vehicle));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Map<String, Object>> getVehicleByFilter(@Valid @RequestBody VehicleFilterRequest request) {
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> getVehicleByFilter(@RequestBody @Valid VehicleFilterRequest request) {
         List<VehicleEntity> vehicles = vehicleService.getVehicleByFilter(request.toFilter());
         
         List<Map<String, Object>> serializedVehicles = vehicles.stream()
@@ -51,7 +51,7 @@ public class VehicleController {
         Map<String, Object> response = Map.of("vehicles", serializedVehicles);
         
         return ResponseEntity.ok(response);
-    }    
+    }
 
     @GetMapping("/{id}/detailed")
     public ResponseEntity<Map<String, Object>> getVehicleDetailed(@PathVariable Long id) {

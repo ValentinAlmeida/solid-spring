@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.containsString;
 
@@ -22,7 +22,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithValidInput_ReturnsSortedResult() throws Exception {
         String requestBody = "{\"unsortedArray\": [5, 3, 2, 4, 7, 1, 0, 6]}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isOk())
@@ -34,7 +34,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithEmptyArray_ReturnsEmptyArrays() throws Exception {
         String requestBody = "{\"unsortedArray\": []}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isOk())
@@ -46,7 +46,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithNullArray_ReturnsBadRequest() throws Exception {
         String requestBody = "{\"unsortedArray\": null}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isBadRequest());
@@ -56,7 +56,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithMissingField_ReturnsBadRequest() throws Exception {
         String requestBody = "{\"otherField\": [1, 2, 3]}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isBadRequest());
@@ -66,7 +66,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithMalformedJson_ReturnsBadRequest() throws Exception {
         String requestBody = "{invalid json}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isBadRequest());
@@ -76,7 +76,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithInvalidArrayElements_ReturnsBadRequest() throws Exception {
         String requestBody = "{\"unsortedArray\": [1, \"two\", 3]}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isBadRequest());
@@ -86,7 +86,7 @@ class BubbleSortControllerIntegrationTest {
     void sortArray_WithObjectInsteadOfArray_ReturnsBadRequest() throws Exception {
         String requestBody = "{\"unsortedArray\": {\"key\":\"value\"}}";
 
-        mockMvc.perform(get("/api/sort/bubble")
+        mockMvc.perform(post("/api/sort/bubble")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isBadRequest());
