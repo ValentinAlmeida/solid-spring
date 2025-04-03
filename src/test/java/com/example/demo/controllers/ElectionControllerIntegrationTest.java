@@ -34,7 +34,7 @@ public class ElectionControllerIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("valid = 80,0")));
+                .andExpect(content().string(containsString("valid = 80.0")));
     }
 
     @Test

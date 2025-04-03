@@ -18,4 +18,8 @@ public interface VehicleServiceInterface {
     Boolean updateVehicle(Long id, UpdateVehicleDTO dto);
 
     Boolean markAsSold(Long id);
+
+    Boolean deleteVehicle(Long id);
+
+    List<VehicleEntity> getAllVehicles();
 }

@@ -27,6 +27,11 @@ public class VehicleService implements VehicleServiceInterface {
     }
 
     @Override
+    public Boolean deleteVehicle(Long id) {
+        return vehicleRepository.delete(id);
+    }
+
+    @Override
     public VehicleEntity getVehicleById(Long id) {
         return vehicleRepository.findById(id);
     }
@@ -56,5 +61,10 @@ public class VehicleService implements VehicleServiceInterface {
         VehicleEntity entity = vehicleRepository.findById(id);
         VehicleEntity soldEntity = entity.markAsSold();
         return vehicleRepository.update(id, soldEntity);
+    }
+
+    @Override
+    public List<VehicleEntity> getAllVehicles() {
+        return vehicleRepository.findAll();
     }
 }

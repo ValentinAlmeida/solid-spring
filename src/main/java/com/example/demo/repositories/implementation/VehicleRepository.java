@@ -42,6 +42,17 @@ public class VehicleRepository implements VehicleRepositoryInterface {
     }
 
     @Override
+    @Transactional
+    public boolean delete(Long id) {
+        VehicleModel model = entityManager.find(VehicleModel.class, id);
+        if (model == null) {
+            return false;
+        }
+        entityManager.remove(model);
+        return true;
+    }
+
+    @Override
     public List<VehicleEntity> findByFilter(VehicleFilter filter) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<VehicleModel> query = cb.createQuery(VehicleModel.class);
@@ -104,5 +115,21 @@ public class VehicleRepository implements VehicleRepositoryInterface {
         vehicleMapper.updateModel(existingModel, vehicleEntity);
         entityManager.merge(existingModel);
         return true;
+    }
+
+    @Override
+    public List<VehicleEntity> findAll() {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<VehicleModel> query = cb.createQuery(VehicleModel.class);
+        Root<VehicleModel> root = query.from(VehicleModel.class);
+        
+        query.select(root);
+        query.orderBy(cb.asc(root.get("id")));
+        
+        List<VehicleModel> result = entityManager.createQuery(query).getResultList();
+        
+        return result.stream()
+                    .map(vehicleMapper::toEntity)
+                    .toList();
     }
 }

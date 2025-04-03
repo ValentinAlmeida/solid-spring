@@ -14,4 +14,8 @@ public interface VehicleRepositoryInterface {
     List<VehicleEntity> findByFilter(VehicleFilter filter);
 
     boolean update(Long id, VehicleEntity vehicleEntity);
+
+    boolean delete(Long id);
+
+    List<VehicleEntity> findAll();
 }
